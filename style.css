@@ -1,8 +1,71 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("./assests/Fonts/Robot9000.woff") format("woff"),
+    url("./assests/Fonts/Robot9000.woff2") format("woff2"); /* Older Browsers */
+  font-weight: normal; /* Adjust as needed */
+  font-style: normal; /* Adjust as needed */
+}
+@font-face {
+  font-family: "Trigram";
+  src: url("./assests/Fonts/Trigram-vmLDM.woff") format("woff"),
+    url("./assests/Fonts/Trigram-vmLDM.woff2") format("woff2"); /* Older Browsers */
+  font-weight: normal; /* Adjust as needed */
+  font-style: normal; /* Adjust as needed */
+}
+
+html,
+body {
+  height: 100%;
+}
+
 body {
   background: radial-gradient(
-    circle at 49% 68.8%,
-    rgb(50, 50, 50) 0%,
+    circle at 45% 15%,
+    rgb(14, 14, 14) 0%,
     rgb(0, 0, 0) 99.4%
   );
   background-size: cover;
+  font-family: "Roboto", "Trigram";
+  color: aliceblue;
+}
+/* circle at 49% 20.8%, */
+main {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10%;
+  padding: 1vw 25vw;
+}
+
+.Card {
+  width: 20vw;
+  height: 60vh;
+  background-color: rgba(50, 50, 50, 0.2);
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(66, 66, 66, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+  text-align: center;
+}
+
+/*
+Media Qwuery For diff sizes
+*/
+
+/* Styles for screens up to 991px (large desktops) */
+@media only screen and (max-width: 991px) {
+  /* Adjust styles here */
+}
+
+/* Styles for screens up to 767px (tablets) */
+@media only screen and (max-width: 767px) {
+  /* Adjust styles here */
+}
+
+/* Styles for screens up to 599px (phones) */
+@media only screen and (max-width: 599px) {
+  /* Adjust styles here */
 }
