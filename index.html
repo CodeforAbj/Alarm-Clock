@@ -8,13 +8,69 @@
   </head>
   <body>
     <main>
+      <!---------- User Interface Card ----------->
       <div class="Card" id="clockContainer">
+        <!---------- current time display ---------->
         <div class="Clock center" id="timeContainer"></div>
-        <div class="Input"></div>
-        <div class="output"></div>
+
+        <!---------- Input Time ---------->
+        <div class="timeInput rowFlex">
+          <span>
+            <select
+              id="hoursSelect"
+              onmousedown="if(this.options.length>5){this.size=5;}"
+              onchange="this.blur()"
+              onblur="this.size=0;"
+            >
+              <option value="" selected disabled>Hours</option>
+            </select>
+            <select
+              id="minuteSelect"
+              onmousedown="if(this.options.length>5){this.size=5;}"
+              onchange="this.blur()"
+              onblur="this.size=0;"
+            >
+              <option value="" selected disabled>Minutes</option>
+            </select>
+          </span>
+        </div>
+
+        <!---------- Input Date ---------->
+        <div class="rowFlex">
+          <input
+            type="date"
+            placeholder="Test"
+            id="dateInput"
+            min=""
+            value=""
+          />
+        </div>
+        <!------------ setAlarm button ------------->
+        <div class="rowFlex" id="setAlarm">
+          <button onclick="renderAlarm()">Set Alarm</button>
+        </div>
+
+        <!------------- Alarm Display -------------->
+        <div class="output" id="alarmOutput">
+          <img
+            src="./assests/alarm-clock.png"
+            id="clockImg"
+            alt="Alarm Clock"
+          />
+          <button onclick="stopAlarm()">Stop</button>
+        </div>
       </div>
-      <div class="Card Alarms"></div>
+
+      <!---------- Alarm List Display Card ----------->
+      <div class="Card Alarms" id="alarmContainer"></div>
     </main>
+    <!-------------- Alram Sound --------------->
+    <audio
+      id="alarmSound"
+      src="assests/mixkit-data-scaner-2847.wav"
+      loop
+    ></audio>
+
     <script src="working.js"></script>
   </body>
 </html>

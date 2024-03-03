@@ -1,3 +1,12 @@
+:root {
+  scrollbar-width: none; /* Hide the scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide the scrollbar in IE/Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar in Chrome/Safari */
+}
+
 @font-face {
   font-family: "Roboto";
   src: url("./assests/Fonts/Robot9000.woff") format("woff"),
@@ -33,11 +42,12 @@ main {
   display: flex;
   justify-content: space-around;
   margin-top: 10%;
-  padding: 1vw 25vw;
+  padding: 1vw 10vw;
 }
 
 .Card {
-  width: 20vw;
+  width: max-content;
+  margin: 0 2vw;
   height: 60vh;
   background-color: rgba(50, 50, 50, 0.2);
   border: 1px solid white;
@@ -45,12 +55,78 @@ main {
   box-shadow: 5px 5px 10px rgba(66, 66, 66, 0.3);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 3vw;
+  flex-shrink: 0;
+
+  scrollbar-width: none; /* Hide the scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide the scrollbar in IE/Edge */
+}
+
+.Card::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar in Chrome/Safari */
+}
+.Card div {
+  margin: 1vh;
+  flex-shrink: 0;
+  align-items: center;
 }
 
 .center {
   text-align: center;
 }
+.rowFlex {
+  display: flex;
+  justify-content: space-around;
+}
 
+select {
+  vertical-align: top;
+}
+#audioSound {
+  display: none;
+}
+
+.alarmElement {
+  display: flex;
+  justify-content: space-around;
+  flex-shrink: 0;
+}
+
+.alarmElement > * {
+  padding: 0 1vw;
+  flex-shrink: 0;
+}
+/*
+.deletebutton {
+  font-family: "Roboto", "Trigram";
+  background-image: linear-gradient(
+    to top,
+    #ed4a45 0%,
+    #7f070b 26%,
+    #7f070b 65%,
+    #e52d27 100%
+  );
+  padding: 1px 4px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  border: none;
+}
+
+.deletebutton:hover {
+  background-position: center top; 
+  color: #fff;
+  text-decoration: none;
+}
+*/
+
+input,
+button,
+select {
+  font-family: "Roboto", "Trigram";
+}
 /*
 Media Qwuery For diff sizes
 */
@@ -68,4 +144,74 @@ Media Qwuery For diff sizes
 /* Styles for screens up to 599px (phones) */
 @media only screen and (max-width: 599px) {
   /* Adjust styles here */
+}
+
+/* deletebutton */
+.deletebutton {
+  background: #980500e2;
+  border: 1px solid #980500e2;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Roboto", "Trigram";
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 12px;
+  min-height: 30px;
+  outline: 0;
+  margin-left: 1vw;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.deletebutton:hover,
+.deletebutton:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #ff4742;
+}
+
+.deletebutton:active {
+  opacity: 0.5;
+}
+#clockImg {
+  max-width: 10vw;
+  max-height: 10vh;
+  margin: 2vh;
+  transform: translate(0%, 0%);
+}
+.output {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-shrink: 0;
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translate(0%, 0%) rotate(0deg);
+  }
+  20% {
+    transform: translate(2%, 2%) rotate(-1deg);
+  }
+  40% {
+    transform: translate(-2%, -2%) rotate(1deg);
+  }
+  60% {
+    transform: translate(0%, 0%) rotate(-1deg);
+  }
+  80% {
+    transform: translate(2%, 2%) rotate(1deg);
+  }
+  100% {
+    transform: translate(0%, 0%) rotate(0deg);
+  }
 }
