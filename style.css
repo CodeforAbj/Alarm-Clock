@@ -30,13 +30,13 @@ body {
 }
 
 body {
-  /*
+  /* Backup background */
   background: radial-gradient(
     circle at 45% 15%,
     rgb(14, 14, 14) 0%,
     rgb(0, 0, 0) 99.4%
-  ); 
-  */
+  );
+
   background-image: url("./assests/bg4.jpg");
   background-size: cover;
   font-family: "Roboto", "Trigram";
