@@ -45,10 +45,12 @@ body {
 /* ====================================================== */
 /* ============= Universal Styles for element ============ */
 /* ====================================================== */
+header {
+  margin-top: 5vh;
+}
 main {
   display: flex;
   justify-content: space-around;
-  margin-top: 10%;
   padding: 1vw 10vw;
 }
 
@@ -80,7 +82,7 @@ select {
 
 .Card {
   width: max-content;
-  margin: 2vh 2vw;
+  margin: 3.2vh 2vw 2vh;
   height: 60vh;
   background-color: rgba(50, 50, 50, 0.2);
   border: 4px double rgb(152, 151, 151);
