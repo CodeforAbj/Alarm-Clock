@@ -1,3 +1,4 @@
+/* ----------- Invisible Scroll ---------- */
 :root {
   scrollbar-width: none; /* Hide the scrollbar in Firefox */
   -ms-overflow-style: none; /* Hide the scrollbar in IE/Edge */
@@ -22,6 +23,7 @@
   font-style: normal; /* Adjust as needed */
 }
 
+/* --- To ensure gradient to not repeat -- */
 html,
 body {
   height: 100%;
@@ -37,13 +39,41 @@ body {
   font-family: "Roboto", "Trigram";
   color: aliceblue;
 }
-/* circle at 49% 20.8%, */
+/* ====================================================== */
+/* ============= Universal Styles for element ============ */
+/* ====================================================== */
 main {
   display: flex;
   justify-content: space-around;
   margin-top: 10%;
   padding: 1vw 10vw;
 }
+
+input,
+button,
+select {
+  font-family: "Roboto", "Trigram";
+}
+
+select {
+  vertical-align: top;
+}
+
+/* ====================================================== */
+/* =============== Resuable generic styles ============== */
+/* ====================================================== */
+
+.center {
+  text-align: center;
+}
+.rowFlex {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* ====================================================== */
+/* ================ Styles for Components =============== */
+/* ====================================================== */
 
 .Card {
   width: max-content;
@@ -73,17 +103,8 @@ main {
   align-items: center;
 }
 
-.center {
-  text-align: center;
-}
-.rowFlex {
-  display: flex;
-  justify-content: space-around;
-}
+/* ------ audio file style (Hidden) ------ */
 
-select {
-  vertical-align: top;
-}
 #audioSound {
   display: none;
 }
@@ -98,55 +119,8 @@ select {
   padding: 0 1vw;
   flex-shrink: 0;
 }
-/*
-.deletebutton {
-  font-family: "Roboto", "Trigram";
-  background-image: linear-gradient(
-    to top,
-    #ed4a45 0%,
-    #7f070b 26%,
-    #7f070b 65%,
-    #e52d27 100%
-  );
-  padding: 1px 4px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  border: none;
-}
 
-.deletebutton:hover {
-  background-position: center top; 
-  color: #fff;
-  text-decoration: none;
-}
-*/
-
-input,
-button,
-select {
-  font-family: "Roboto", "Trigram";
-}
-/*
-Media Qwuery For diff sizes
-*/
-
-/* Styles for screens up to 991px (large desktops) */
-@media only screen and (max-width: 991px) {
-  /* Adjust styles here */
-}
-
-/* Styles for screens up to 767px (tablets) */
-@media only screen and (max-width: 767px) {
-  /* Adjust styles here */
-}
-
-/* Styles for screens up to 599px (phones) */
-@media only screen and (max-width: 599px) {
-  /* Adjust styles here */
-}
-
-/* deletebutton */
+/* ------------- deletebutton ------------ */
 .deletebutton {
   background: #980500e2;
   border: 1px solid #980500e2;
@@ -182,6 +156,8 @@ Media Qwuery For diff sizes
 .deletebutton:active {
   opacity: 0.5;
 }
+
+/* ----------- Animation of alarm ringing ---------- */
 #clockImg {
   max-width: 10vw;
   max-height: 10vh;
@@ -214,4 +190,29 @@ Media Qwuery For diff sizes
   100% {
     transform: translate(0%, 0%) rotate(0deg);
   }
+}
+
+/* ------ Alarm list container style ----- */
+
+#alarmContainer {
+  display: none;
+}
+
+/* ====================================================== */
+/* ============= Media Qwuery For diff sizes ============ */
+/* ====================================================== */
+
+/* Styles for screens up to 991px (large desktops) */
+@media only screen and (max-width: 991px) {
+  /* Adjust styles here */
+}
+
+/* Styles for screens up to 767px (tablets) */
+@media only screen and (max-width: 767px) {
+  /* Adjust styles here */
+}
+
+/* Styles for screens up to 599px (phones) */
+@media only screen and (max-width: 599px) {
+  /* Adjust styles here */
 }

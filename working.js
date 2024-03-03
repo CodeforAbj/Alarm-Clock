@@ -69,6 +69,11 @@ dateRenderer();
 // --------- Alram time renderer --------- //
 function renderAlarm() {
   const alarmContainer = document.getElementById("alarmContainer");
+
+  //  Displaying the hidden display for alarmsList  //
+  alarmContainer.style.display = flex;
+
+  //  Creating structure to store a single alarm  //
   const alarmElement = document.createElement("div");
   alarmElement.className = "rowFlex alarmElement";
 
@@ -83,7 +88,7 @@ function renderAlarm() {
     return; // In case not selected any input
   }
 
-  // For inserting time in alarm section
+  // - For inserting time in alarm section - //
   const timeElement = document.createElement("h3");
   let alarmTime = `${hours.toString().padStart(2, "0")}:${minutes
     .toString()
@@ -101,6 +106,7 @@ function renderAlarm() {
   deleteButton.addEventListener("click", function () {
     alarmContainer.removeChild(alarmElement);
 
+    //  To clear the alarm from storage too  //
     const indexToDelete = alarmsList.findIndex(
       (alarm) => alarm.alarmTime === alarmTime
     );
@@ -110,7 +116,13 @@ function renderAlarm() {
     if (indexToDelete !== -1) {
       alarmsList.splice(indexToDelete, 1);
     }
+
+    //  To hide the alarmContainer when empty  //
+    if (alarmsList.length === 0) {
+      alarmContainer.style.display = "none";
+    }
   });
+  //  To apply Styles to delete button  //
   deleteButton.className = "deletebutton";
 
   //Populating Single Alarm Div
