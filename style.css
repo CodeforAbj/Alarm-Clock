@@ -30,11 +30,14 @@ body {
 }
 
 body {
+  /*
   background: radial-gradient(
     circle at 45% 15%,
     rgb(14, 14, 14) 0%,
     rgb(0, 0, 0) 99.4%
-  );
+  ); 
+  */
+  background-image: url("./assests/bg4.jpg");
   background-size: cover;
   font-family: "Roboto", "Trigram";
   color: aliceblue;
@@ -77,12 +80,12 @@ select {
 
 .Card {
   width: max-content;
-  margin: 0 2vw;
+  margin: 2vh 2vw;
   height: 60vh;
   background-color: rgba(50, 50, 50, 0.2);
-  border: 1px solid white;
+  border: 4px double rgb(152, 151, 151);
   border-radius: 10px;
-  box-shadow: 5px 5px 10px rgba(66, 66, 66, 0.3);
+  box-shadow: 0px 3px 1px 3px rgba(153, 153, 153, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -202,17 +205,11 @@ select {
 /* ============= Media Qwuery For diff sizes ============ */
 /* ====================================================== */
 
-/* Styles for screens up to 991px (large desktops) */
-@media only screen and (max-width: 991px) {
-  /* Adjust styles here */
-}
-
-/* Styles for screens up to 767px (tablets) */
-@media only screen and (max-width: 767px) {
-  /* Adjust styles here */
-}
-
 /* Styles for screens up to 599px (phones) */
 @media only screen and (max-width: 599px) {
   /* Adjust styles here */
+  main {
+    align-items: center;
+    flex-direction: column;
+  }
 }
