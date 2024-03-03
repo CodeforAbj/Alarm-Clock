@@ -66,12 +66,13 @@ function dateRenderer() {
   document.getElementById("dateInput").min = `${year}-${month}-${day}`;
 }
 dateRenderer();
-// --------- Alram time renderer --------- //
+
+// ====================================================== //
+// ======== Alram time Logic to Render and set it ======= //
+// ====================================================== //
+
 function renderAlarm() {
   const alarmContainer = document.getElementById("alarmContainer");
-
-  //  Displaying the hidden display for alarmsList  //
-  alarmContainer.style.display = flex;
 
   //  Creating structure to store a single alarm  //
   const alarmElement = document.createElement("div");
@@ -93,11 +94,56 @@ function renderAlarm() {
   let alarmTime = `${hours.toString().padStart(2, "0")}:${minutes
     .toString()
     .padStart(2, "0")}`;
-  timeElement.innerHTML = alarmTime;
 
   //For Displaying Date in alarm section
   const alarmDate = document.getElementById("dateInput").value;
   const dateElement = document.createElement("h4");
+
+  // ====================================================== //
+  // =============== Setting the alarm Logic ============== //
+  // ====================================================== //
+
+  /*
+  Creating date with time to get time remaining 
+  for alarm to off by difference with time of setting alarm
+*/
+  const alarmStamp = new Date(alarmDate);
+  alarmStamp.setHours(hours); // Set hours
+  alarmStamp.setMinutes(minutes); // Set minutes
+  alarmStamp.setSeconds(0);
+
+  const dateTimeInput = new Date(
+    alarmStamp.getFullYear(),
+    alarmStamp.getMonth(),
+    alarmStamp.getDate(),
+    alarmStamp.getHours(),
+    alarmStamp.getMinutes()
+  );
+  const currentDate = new Date();
+  const countDownRemaining = dateTimeInput.getTime() - currentDate.getTime();
+
+  //  Safety check if time provided is past already  //
+  if (countDownRemaining <= 0) {
+    alert("Time can't be of past");
+    return;
+  }
+  // Storing the reference to clear the setInteval
+  clearRef = setTimeout(() => {
+    document.getElementById("alarmOutput").style.display = "flex";
+    document.getElementById("alarmSound").play();
+    startVibrating();
+  }, countDownRemaining);
+  // ----- Putting the alarm to storage ---- //
+  alarmIndex++;
+  alarmsList.push({
+    id: alarmIndex,
+    alarmTime: alarmTime,
+    alarmDate: alarmDate,
+    clearRef: clearRef,
+  });
+
+  // ---- Setting it finally to display ---- //
+  timeElement.innerHTML = alarmTime;
   dateElement.innerHTML = alarmDate;
 
   // Delete button to remove a particular alarm
@@ -133,51 +179,13 @@ function renderAlarm() {
   // Populating Alarm container
   alarmContainer.appendChild(alarmElement);
 
-  // Calling for saving that alarm
-  setAlarm({
-    id: alarmIndex + 1,
-    alarmTime: alarmTime,
-    alarmDate: alarmDate,
-  });
+  //  Displaying the hidden display for alarmsList  //
+  alarmContainer.style.display = "flex";
 }
 
 // ====================================================== //
-// ===================== Main Logic ===================== //
+// ================= Logic to stop Alarm ================ //
 // ====================================================== //
-
-// -- function to save alarm in storage -- //
-function setAlarm({ id, alarmTime, alarmDate }) {
-  const alarmStamp = new Date(alarmDate);
-  // Desturcturing Time
-  const [hours, minutes] = alarmTime.split(":");
-  // const minutesInt = parseInt(minutes, 10);
-  alarmStamp.setHours(hours); // Set hours
-  alarmStamp.setMinutes(minutes); // Set minutes
-  alarmStamp.setSeconds(0);
-
-  const dateTimeInput = new Date(
-    alarmStamp.getFullYear(),
-    alarmStamp.getMonth(),
-    alarmStamp.getDate(),
-    alarmStamp.getHours(),
-    alarmStamp.getMinutes()
-  );
-  const currentDate = new Date();
-  const countDownRemaining = dateTimeInput.getTime() - currentDate.getTime();
-
-  clearRef = setTimeout(() => {
-    document.getElementById("alarmOutput").style.display = "flex";
-    document.getElementById("alarmSound").play();
-    startVibrating();
-  }, countDownRemaining);
-  alarmsList.push({
-    id: id,
-    alarmTime: alarmTime,
-    alarmDate: alarmDate,
-    clearRef: clearRef,
-  });
-}
-
 function stopAlarm() {
   document.getElementById("alarmSound").pause();
   stopVibrating();
