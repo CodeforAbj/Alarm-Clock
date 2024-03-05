@@ -26,7 +26,7 @@ function timeRenderer() {
   timeContainer.appendChild(timeElement);
 }
 // ##################################################################### //
-// ########## The Magic Trick to call timeRenderer everysecond ######### //
+// ########## The Magic Trick is to call timeRenderer every second ######### //
 // ##################################################################### //
 setInterval(timeRenderer, 1000);
 
